@@ -1,0 +1,46 @@
+
+server:
+  port: 8081
+
+spring:
+  application:
+    name: 'fornecedor'
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fornecedor
+    username: postgres
+    password: 123456
+    driverClassName: org.postgresql.Driver
+    hikari:
+      schema: public
+      maximum-pool-size: 50
+      minimum-idle: 10
+      connection-test-query: SELECT 1
+      data-source-properties:
+        connectTimeout: 3000
+        socketTimeout: 3000
+        
+        
+  jpa:
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: false
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+
+flyway:
+  locations: classpath:db/migration
+  schemas: public
+  baselineOnMigrate: true
+  validateOnMigrate: false
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
