@@ -19,6 +19,7 @@ public class CompraController {
 	@Autowired
 	private CompraService compraService;
 
+	
 	@RequestMapping(method = RequestMethod.POST)
 	public ResponseEntity<Compra> realizaCompra(@RequestBody CompraDTO compra) {
 		Compra compraRealizada = compraService.realizaCompra(compra);
