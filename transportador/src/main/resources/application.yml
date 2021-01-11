@@ -1,7 +1,5 @@
-server:
-  port: 8082
 
-spring:  application:    name: 'loja'
+server:  port: 8083
 
 eureka:  client:    register-with-eureka: true
     fetch-registry: true

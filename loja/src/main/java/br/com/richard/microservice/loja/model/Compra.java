@@ -1,5 +1,7 @@
 package br.com.richard.microservice.loja.model;
 
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,15 +19,11 @@ public class Compra {
 	@Column(name = "endereco_destino")
 	private String enderecoDestino;
 	
-	public Compra() {
-	}
-
-	public Compra(Long pedidoId, Integer tempoDePreparo, String enderecoDestino) {
-		this.pedidoId = pedidoId;
-		this.tempoDePreparo = tempoDePreparo;
-		this.enderecoDestino = enderecoDestino;
-	}
-
+	private Long voucher;
+	
+	@Column(name = "data_entrega")
+	private LocalDate dataParaEntrega;
+	
 	public Long getPedidoId() {
 		return pedidoId;
 	}
@@ -41,8 +39,21 @@ public class Compra {
 	public String getEnderecoDestino() {
 		return enderecoDestino;
 	}
-	public void setEndereco(String endereco) {
-		this.enderecoDestino = endereco;
+	public void setEnderecoDestino(String enderecoDestino) {
+		this.enderecoDestino = enderecoDestino;
 	}
-
+	public Long getVoucher() {
+		return voucher;
+	}
+	public void setVoucher(Long voucher) {
+		this.voucher = voucher;
+	}
+	public LocalDate getDataParaEntrega() {
+		return dataParaEntrega;
+	}
+	public void setDataParaEntrega(LocalDate dataParaEntrega) {
+		this.dataParaEntrega = dataParaEntrega;
+	}
+	
+	
 }
