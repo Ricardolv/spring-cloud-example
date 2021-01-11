@@ -25,12 +25,12 @@ public class CompraService {
 		this.compraRepository = compraRepository;
 	}	
 	
-	@HystrixCommand
+	@HystrixCommand(threadPoolKey = "findByIdThreadPool")
 	public Compra findById(Long id) {
 		return compraRepository.findById(id).orElse(null);
 	}
 
-	@HystrixCommand(fallbackMethod = "realizaCompraFallback")
+	@HystrixCommand(fallbackMethod = "realizaCompraFallback", threadPoolKey = "realizaCompraThreadPool")
 	public Compra realizaCompra(CompraDTO compraDto) {
 		
 		String estado = compraDto.getEndereco().getEstado();
