@@ -8,4 +8,4 @@ spring:
         git:
          default-label: main
          uri: https://github.com/Ricardolv/ms-repo
-         search-paths: fornecedor
+         search-paths: fornecedor, loja

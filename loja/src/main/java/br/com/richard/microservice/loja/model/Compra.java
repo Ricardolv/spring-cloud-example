@@ -1,9 +1,23 @@
 package br.com.richard.microservice.loja.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Compra {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id")
 	private Long pedidoId;
+	
+	@Column(name = "tempo_preparo")
 	private Integer tempoDePreparo;
+	
+	@Column(name = "endereco_destino")
 	private String enderecoDestino;
 	
 	public Compra(Long pedidoId, Integer tempoDePreparo, String enderecoDestino) {
