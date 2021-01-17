@@ -1,0 +1,412 @@
+{
+	"info": {
+		"_postman_id": "01ae4107-5065-43d6-8f0d-2dbf7bc473e7",
+		"name": "micro-service-spring-cloud",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "loja",
+			"item": [
+				{
+					"name": "Loja - compra",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "web",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "queryParams",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itens\": [\n        {\n            \"id\": 1,\n            \"quantidade\": 5\n        },\n         {\n            \"id\": 2,\n            \"quantidade\": 5\n        }\n    ],\n    \"endereco\": {\n        \"rua\": \"Vitorino Roza de Lima\",\n        \"numero\": \"123\",\n        \"estado\": \"MG\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8082/compra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"compra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get compra",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8082/compra/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"compra",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "fornecedor",
+			"item": [
+				{
+					"name": "produtos",
+					"item": [
+						{
+							"name": "produtos",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/produto/DF",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"produto",
+										"DF"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "pedidos",
+					"item": [
+						{
+							"name": "pedidos",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[\n    {\n        \"id\": 1,\n        \"quantidade\": 10\n    },\n        {\n        \"id\": 2,\n        \"quantidade\": 6\n    }\n]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:8081/pedido",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"pedido"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "infos",
+					"item": [
+						{
+							"name": "Fornecedor-info",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/info/MG",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"info",
+										"MG"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "eureka-server",
+			"item": [
+				{
+					"name": "Eureka - apps",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8761/eureka/apps",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8761",
+							"path": [
+								"eureka",
+								"apps"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "config-server",
+			"item": [
+				{
+					"name": "get config-server",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8888/fornecedor/default",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"fornecedor",
+								"default"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "zuul",
+			"item": [
+				{
+					"name": "get routes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8084/actuator/routes",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"actuator",
+								"routes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registrar compra",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"itens\": [\n        {\n            \"id\": 1,\n            \"quantidade\": 5\n        },\n         {\n            \"id\": 2,\n            \"quantidade\": 5\n        }\n    ],\n    \"endereco\": {\n        \"rua\": \"Vitorino Roza de Lima\",\n        \"numero\": \"123\",\n        \"estado\": \"MG\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8084/loja/compra",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"loja",
+								"compra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get fornecedor/info Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8084/fornecedor/info/MG",
+							"host": [
+								"localhost"
+							],
+							"port": "8084",
+							"path": [
+								"fornecedor",
+								"info",
+								"MG"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": " http://localhost:8088/oauth/token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "lojapwd",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "loja",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "scope",
+									"value": "web",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "richard",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "richardpwd",
+									"type": "text"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8088/oauth/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"oauth",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8088/user",
+					"request": {
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "web",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "queryParams",
+									"type": "string"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8088/user",
+							"host": [
+								"localhost"
+							],
+							"port": "8088",
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
