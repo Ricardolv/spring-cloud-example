@@ -16,8 +16,7 @@ public class AuthorizationServerCofig extends AuthorizationServerConfigurerAdapt
 	private final UserDetailsService userDetailsService;
 	private final PasswordEncoder passwordEncoder;
 
-	public AuthorizationServerCofig(AuthenticationManager authenticationManager,
-			UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
+	public AuthorizationServerCofig(AuthenticationManager authenticationManager, UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
 		this.authenticationManager = authenticationManager;
 		this.userDetailsService = userDetailsService;
 		this.passwordEncoder = passwordEncoder;
@@ -38,11 +37,7 @@ public class AuthorizationServerCofig extends AuthorizationServerConfigurerAdapt
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 
 		endpoints.authenticationManager(authenticationManager)
-		.userDetailsService(userDetailsService);
-		
-		
-		
-		
+				 .userDetailsService(userDetailsService);
 	}
 	
 }
