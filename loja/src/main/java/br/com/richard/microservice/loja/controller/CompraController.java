@@ -27,7 +27,6 @@ public class CompraController {
 		return ResponseEntity.ok(compra);
 	}
 	
-	
 	@PostMapping
 	public ResponseEntity<Compra> realizaCompra(@RequestBody CompraDTO compra) {
 		Compra compraRealizada = compraService.realizaCompra(compra);
